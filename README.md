@@ -40,11 +40,11 @@ space.export("output.usdp")
 
 ## Trademarks
 
-"Eorld" in all its forms — including but not limited to **Eorld**, **EORLD**, **eorld**, and **E-WORLD** — whether used as a word mark, stylized logo, or trade name, are trademarks and/or service marks of Hanzhong Eorld Technology Co., Ltd. (汉中记忆仓库网络科技有限公司) in the People's Republic of China and internationally, and are protected under applicable trademark and unfair competition laws, including as common law marks in jurisdictions where federal registration has not yet been obtained.
+"Eorld" in all its forms — including but not limited to **Eorld**, **EORLD**, and **eorld** — whether used as a word mark, stylized logo, or trade name, are trademarks and/or service marks of Hanzhong Eorld Technology Co., Ltd. (汉中记忆仓库网络科技有限公司) in the People's Republic of China and internationally, and are protected under applicable trademark and unfair competition laws, including as common law marks in jurisdictions where federal registration has not yet been obtained.
 
 USDP is a trademark/service mark of Hanzhong Eorld Technology Co., Ltd., used in connection with its Unified Space Description Protocol products and services.
 
-Eorld has adopted, is using, and intends to continue using the Eorld mark and its variants (EORLD, eorld, E-WORLD) in interstate and international commerce in connection with computer software, SaaS/PaaS platforms, 3D spatial data protocols, and related goods and services. This public repository serves as documentary evidence of such use and of Eorld's claim of ownership over the full visual spectrum of its brand identifiers.
+Eorld has adopted, is using, and intends to continue using the Eorld mark and its variants (EORLD, eorld) in interstate and international commerce in connection with computer software, SaaS/PaaS platforms, 3D spatial data protocols, and related goods and services. This public repository serves as documentary evidence of such use and of Eorld's claim of ownership over the full visual spectrum of its brand identifiers.
 
 No trademark or trade dress contained in this project may be used in any manner likely to cause confusion, mistake, or deception, without prior express written permission from Hanzhong Eorld Technology Co., Ltd.
 
