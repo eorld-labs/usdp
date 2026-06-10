@@ -1,4 +1,4 @@
-# Copyright 2026 Eorld (大效果科技有限公司)
+# Copyright 2026 Eorld (汉中记忆仓库网络科技有限公司)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,14 +13,14 @@
 # limitations under the License.
 
 """
-P003 坐标归一化 - Coordinate Normalization
+P003 Coordinate Normalization
 
-USDP 标准坐标系定义：
-  - Y-up 右手坐标系
-  - 单位：米 (meter)
-  - 原点：场景包围盒底面中心
-  - X 轴：场景长边方向
-  - Z 轴：场景短边方向
+USDP standard coordinate system definition:
+  - Y-up, right-handed
+  - Unit: meter
+  - Origin: center of the scene bounding box bottom plane
+  - X axis: longest dimension of the scene
+  - Z axis: shortest dimension of the scene
 """
 
 from typing import Callable
@@ -68,14 +68,14 @@ COORDINATE_TRANSFORMS: dict[CoordinateSystem, dict[str, float | TransformFunc | 
 
 
 class CoordinateTransform:
-    """坐标系转换器"""
-    
+    """Transforms coordinates between different coordinate systems"""
+
     def __init__(self, from_system: CoordinateSystem, to_system: CoordinateSystem):
         self.from_system = from_system
         self.to_system = to_system
 
     def transform_point(self, point: Point3D) -> Point3D:
-        """转换单个点"""
+        """Transform a single point"""
         if self.from_system == self.to_system:
             return point
         func = COORDINATE_TRANSFORMS[self.from_system].get("transform")
@@ -84,7 +84,7 @@ class CoordinateTransform:
         return point
 
     def transform_element(self, element: SpaceElement) -> SpaceElement:
-        """转换空间元素的所有顶点和位置"""
+        """Transform all vertices and position of a spatial element"""
         element.vertices = [self.transform_point(v) for v in element.vertices]
         element.position = self.transform_point(element.position)
         return element
@@ -95,14 +95,14 @@ def normalize_coordinates(
     target: CoordinateSystem = CoordinateSystem.USDP_STANDARD,
 ) -> SpaceDescription:
     """
-    将 SpaceDescription 的坐标系归一化到目标坐标系
+    Normalize a SpaceDescription to the target coordinate system.
 
     Args:
-        space: 待归一化的空间描述
-        target: 目标坐标系，默认 USDP_STANDARD
+        space: The space description to normalize.
+        target: Target coordinate system (default: USDP_STANDARD).
 
     Returns:
-        归一化后的 SpaceDescription（原地修改）
+        The normalized SpaceDescription (modified in place).
     """
     if space.coordinate_system == target:
         return space

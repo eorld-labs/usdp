@@ -1,10 +1,27 @@
 Eorld USDP SDK
-Copyright 2026 Eorld (大效果科技有限公司)
+Copyright 2026 Eorld (Hanzhong Eorld Technology Co., Ltd.)
 
 This product includes software developed at
 Eorld (https://github.com/Eorld).
 
-Eorld and the Eorld logo are trademarks/service marks of
-大效果科技有限公司 (Daxiaoguo Technology Co., Ltd.).
-USDP is an unregistered trademark/service mark of 大效果科技有限公司,
-used for its Unified Space Description Protocol products and services.
+TRADEMARK NOTICE
+
+"Eorld" in all its visual forms — Eorld, EORLD, eorld, E-WORLD — whether as
+a word mark, stylized logo, or trade name, are trademarks and/or service marks
+of Hanzhong Eorld Technology Co., Ltd. (汉中记忆仓库网络科技有限公司).
+
+Eorld claims ownership of and common law trademark rights in the Eorld mark
+and all typographical variants thereof in all jurisdictions worldwide, including
+through use in interstate and international commerce via this open-source
+repository and associated digital properties.
+
+Eorld and the Eorld logo are registered trademarks/service marks in the
+People's Republic of China. Federal registration in other jurisdictions is
+pending or may be pursued as commercial presence expands.
+
+USDP is a trademark/service mark of Hanzhong Eorld Technology Co., Ltd., used in
+connection with its Unified Space Description Protocol products and services.
+
+No license to use any Eorld trademark is granted by this notice or by the
+Apache 2.0 license covering the software in this repository. Use of Eorld
+trademarks requires prior express written permission.

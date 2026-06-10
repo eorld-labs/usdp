@@ -1,54 +1,55 @@
 # Eorld USDP SDK
 
-USDP (Unified Space Description Protocol) v1.0 — 开源 3D 空间数据协议与开发者工具包。
+USDP (Unified Space Description Protocol) v1.0 — an open-source 3D spatial data protocol and developer toolkit.
 
-## 概述
+## Overview
 
-Eorld USDP SDK 提供统一的 3D 空间描述协议，任何 3D 重建工具只需实现一个 Provider，即可将空间数据转换为 USDP 格式，进入 Eorld 空间生态。
+The Eorld USDP SDK provides a unified 3D spatial description protocol. Any 3D reconstruction tool can implement a single Provider to convert its output into USDP format and enter the Eorld spatial ecosystem.
 
-## 协议组成
+## Components
 
-| 模块 | 说明 |
-|------|------|
-| **USDP 协议** | 统一空间描述协议规范 (v1.0) |
-| **P003 坐标归一化** | 多源坐标系统一转换 |
-| **Provider 接口** | 空间源插件抽象接口 |
-| **参考实现** | COLMAP/SfM 转换器 |
+| Module | Description |
+|--------|-------------|
+| **USDP Protocol** | Unified Space Description Protocol specification (v1.0) |
+| **P003 Coordinate Normalization** | Multi-source coordinate system unification |
+| **Provider Interface** | Abstract plugin interface for spatial data sources |
+| **Reference Implementation** | COLMAP/SfM converter |
 
-## 安装
+## Installation
 
 ```bash
 pip install eorld-usdp
 ```
 
-## 快速开始
+## Quick Start
 
 ```python
 from usdp import SpaceDescription, CoordinateSystem
 from usdp.provider import USDPProvider
 from usdp.coordinate import normalize_coordinates
 
-# 加载任意 3D 重建结果
+# Load any 3D reconstruction output
 space = SpaceDescription.from_provider(MyProvider, source_path="scan/")
 
-# 归一化坐标系
+# Normalize to USDP standard coordinate system
 space = normalize_coordinates(space, target=CoordinateSystem.USDP_STANDARD)
 
-# 导出为 USDP 格式
+# Export to USDP format
 space.export("output.usdp")
 ```
 
-## 商标
+## Trademarks
 
-Eorld 及其 Logo 是大效果科技有限公司在中华人民共和国及海外的注册商标/使用商标。
+"Eorld" in all its forms — including but not limited to **Eorld**, **EORLD**, **eorld**, and **E-WORLD** — whether used as a word mark, stylized logo, or trade name, are trademarks and/or service marks of Hanzhong Eorld Technology Co., Ltd. (汉中记忆仓库网络科技有限公司) in the People's Republic of China and internationally, and are protected under applicable trademark and unfair competition laws, including as common law marks in jurisdictions where federal registration has not yet been obtained.
 
-USDP 是大效果科技有限公司的未注册商标/服务标记，用于其统一空间描述协议产品和服务。
+USDP is a trademark/service mark of Hanzhong Eorld Technology Co., Ltd., used in connection with its Unified Space Description Protocol products and services.
 
-本项目包含的商标和商业外观未经明确书面许可不得以任何可能导致混淆的方式使用。
+Eorld has adopted, is using, and intends to continue using the Eorld mark and its variants (EORLD, eorld, E-WORLD) in interstate and international commerce in connection with computer software, SaaS/PaaS platforms, 3D spatial data protocols, and related goods and services. This public repository serves as documentary evidence of such use and of Eorld's claim of ownership over the full visual spectrum of its brand identifiers.
 
+No trademark or trade dress contained in this project may be used in any manner likely to cause confusion, mistake, or deception, without prior express written permission from Hanzhong Eorld Technology Co., Ltd.
 
-## 许可证
+## License
 
-Copyright 2026 Eorld (大效果科技有限公司)
+Copyright 2026 Eorld (汉中记忆仓库网络科技有限公司)
 
-本项目基于 Apache License 2.0 开源，详见 [LICENSE](LICENSE) 文件。
+This project is open-sourced under the Apache License 2.0. See [LICENSE](LICENSE) for details.

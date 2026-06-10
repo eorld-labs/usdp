@@ -1,4 +1,4 @@
-# Copyright 2026 Eorld (大效果科技有限公司)
+# Copyright 2026 Eorld (汉中记忆仓库网络科技有限公司)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,10 +13,11 @@
 # limitations under the License.
 
 """
-USDP Provider 接口 - 空间源插件抽象接口
+USDP Provider Interface — Abstract plugin interface for spatial data sources.
 
-任何 3D 重建工具或硬件只需实现 USDPProvider 接口，
-即可将其输出转换为 USDP 格式，接入 Eorld 空间生态。
+Any 3D reconstruction tool or hardware device can implement the
+USDPProvider interface to convert its output into USDP format
+and connect to the Eorld spatial ecosystem.
 """
 
 from abc import ABC, abstractmethod
@@ -25,9 +26,9 @@ from .protocol import SpaceDescription
 
 class USDPProvider(ABC):
     """
-    空间源 Provider 抽象接口
+    Abstract interface for spatial data source providers.
 
-    实现示例：
+    Usage example:
         class MyScannerProvider(USDPProvider):
             name = "MyScanner"
             version = "1.0"
@@ -40,37 +41,37 @@ class USDPProvider(ABC):
     @property
     @abstractmethod
     def name(self) -> str:
-        """Provider 名称"""
+        """Human-readable provider name"""
         ...
 
     @property
     @abstractmethod
     def version(self) -> str:
-        """Provider 版本"""
+        """Provider version string"""
         ...
 
     @property
     @abstractmethod
     def source_type(self) -> str:
-        """数据源类型：lidar, sfm, nerf, roomplan, manual"""
+        """Data source type: lidar, sfm, nerf, roomplan, manual"""
         ...
 
     @abstractmethod
     def load(self, source_path: str, **kwargs) -> SpaceDescription:
         """
-        加载并转换为 USDP 格式
+        Load and convert data to USDP format.
 
         Args:
-            source_path: 数据源路径（目录或文件）
-            **kwargs: Provider 特定参数
+            source_path: Path to the data source (directory or file).
+            **kwargs: Provider-specific parameters.
 
         Returns:
-            SpaceDescription: USDP 格式的空间描述
+            A SpaceDescription in USDP format.
         """
         ...
 
     def validate(self, space: SpaceDescription) -> bool:
-        """校验 USDP 输出是否合法（可重写）"""
+        """Validate USDP output (may be overridden)"""
         if space.version != "1.0":
             return False
         for element in space.elements:

@@ -1,4 +1,4 @@
-# Copyright 2026 Eorld (大效果科技有限公司)
+# Copyright 2026 Eorld (汉中记忆仓库网络科技有限公司)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,11 +13,12 @@
 # limitations under the License.
 
 """
-USDP v1.0 协议定义 - Unified Space Description Protocol
+USDP v1.0 Protocol Definition — Unified Space Description Protocol
 
-USDP 是一种开放、可扩展的 3D 空间描述格式，
-旨在统一不同 3D 重建源（LiDAR、SfM、NeRF、3DGS 等）的输出，
-为 Eorld 空间生态提供标准化的数据交换层。
+USDP is an open, extensible 3D spatial description format designed to
+unify the outputs of diverse 3D reconstruction sources (LiDAR, SfM,
+NeRF, 3DGS, etc.) and provide a standardized data exchange layer
+for the Eorld spatial ecosystem.
 """
 
 from dataclasses import dataclass, field
@@ -27,7 +28,7 @@ import json
 
 
 class ElementType(str, Enum):
-    """空间元素类型"""
+    """Spatial element types"""
     WALL = "wall"
     FLOOR = "floor"
     CEILING = "ceiling"
@@ -38,7 +39,7 @@ class ElementType(str, Enum):
 
 
 class CoordinateSystem(str, Enum):
-    """坐标系类型"""
+    """Coordinate system identifiers"""
     USDP_STANDARD = "usdp_standard"
     UNITY = "unity"
     UNREAL = "unreal"
@@ -49,7 +50,7 @@ class CoordinateSystem(str, Enum):
 
 @dataclass
 class Point3D:
-    """三维点"""
+    """3D point in space"""
     x: float
     y: float
     z: float
@@ -63,7 +64,7 @@ class Point3D:
 
 @dataclass
 class Quaternion:
-    """四元数旋转"""
+    """Quaternion rotation"""
     x: float = 0.0
     y: float = 0.0
     z: float = 0.0
@@ -72,14 +73,14 @@ class Quaternion:
 
 @dataclass
 class BoundingBox:
-    """轴对齐包围盒"""
+    """Axis-aligned bounding box"""
     min: Point3D = field(default_factory=lambda: Point3D(0, 0, 0))
     max: Point3D = field(default_factory=lambda: Point3D(0, 0, 0))
 
 
 @dataclass
 class SpatialMetadata:
-    """空间元数据"""
+    """Capture and source metadata"""
     source: str = ""
     source_type: str = ""
     coordinate_system: CoordinateSystem = CoordinateSystem.USDP_STANDARD
@@ -90,7 +91,7 @@ class SpatialMetadata:
 
 @dataclass
 class SpaceElement:
-    """空间元素（墙/地板/家具等）"""
+    """A spatial element (wall, floor, furniture, etc.)"""
     id: str
     element_type: ElementType
     vertices: list[Point3D] = field(default_factory=list)
@@ -105,10 +106,10 @@ class SpaceElement:
 @dataclass
 class SpaceDescription:
     """
-    USDP 空间描述 - 顶层数据结构
+    USDP Space Description — top-level data structure.
 
-    一个 SpaceDescription 代表一个完整的 3D 空间场景，
-    包含所有元素、元数据和坐标系信息。
+    A SpaceDescription represents a complete 3D spatial scene,
+    containing all elements, metadata, and coordinate system information.
     """
     version: str = "1.0"
     metadata: SpatialMetadata = field(default_factory=SpatialMetadata)
@@ -117,7 +118,7 @@ class SpaceDescription:
     custom_properties: dict = field(default_factory=dict)
 
     def to_dict(self) -> dict:
-        """序列化为字典"""
+        """Serialize to dictionary"""
         return {
             "version": self.version,
             "coordinate_system": self.coordinate_system.value,
@@ -146,17 +147,17 @@ class SpaceDescription:
         }
 
     def to_json(self, indent: int = 2) -> str:
-        """序列化为 JSON 字符串"""
+        """Serialize to JSON string"""
         return json.dumps(self.to_dict(), indent=indent, ensure_ascii=False)
 
     def export(self, filepath: str) -> None:
-        """导出为 .usdp JSON 文件"""
+        """Export to .usdp JSON file"""
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(self.to_json())
 
     @classmethod
     def from_dict(cls, data: dict) -> "SpaceDescription":
-        """从字典反序列化"""
+        """Deserialize from dictionary"""
         elements = []
         for e in data.get("elements", []):
             elements.append(SpaceElement(
@@ -188,9 +189,9 @@ class SpaceDescription:
 
     @classmethod
     def from_provider(cls, provider_class, source_path: str, **kwargs) -> "SpaceDescription":
-        """通用 Provider 加载入口"""
+        """Generic provider loading entry point"""
         from .provider import USDPProvider
         if issubclass(provider_class, USDPProvider):
             provider = provider_class()
             return provider.load(source_path, **kwargs)
-        raise TypeError(f"{provider_class} 必须实现 USDPProvider 接口")
+        raise TypeError(f"{provider_class} must implement the USDPProvider interface")

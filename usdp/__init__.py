@@ -1,4 +1,4 @@
-# Copyright 2026 Eorld (大效果科技有限公司)
+# Copyright 2026 Eorld (汉中记忆仓库网络科技有限公司)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.

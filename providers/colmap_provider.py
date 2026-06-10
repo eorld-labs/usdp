@@ -1,4 +1,4 @@
-# Copyright 2026 Eorld (大效果科技有限公司)
+# Copyright 2026 Eorld (汉中记忆仓库网络科技有限公司)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,11 +13,11 @@
 # limitations under the License.
 
 """
-COLMAP/SfM Provider 参考实现
+COLMAP/SfM Provider — Reference implementation.
 
-将 COLMAP 稀疏/稠密重建结果转换为 USDP 格式。
-COLMAP 是世界坐标系（Y-down，图像惯例），
-本 Provider 自动转换为 USDP 标准坐标系（Y-up）。
+Converts COLMAP sparse/dense reconstruction output to USDP format.
+COLMAP uses world coordinates (Y-down, image convention); this
+provider automatically converts to the USDP standard (Y-up).
 """
 
 import os
